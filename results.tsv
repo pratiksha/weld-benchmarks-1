@@ -1,0 +1,13 @@
+Benchmark	Scheme	Parameters	Trial 1	Trial 2	Trial 3	Trial 4	Trial 5
+data_cleaning	Python->Weld	s=2000, f=data/311-service-requests-sf=%d.csv	2.21562695503	2.26503300667	2.3347659111	2.21465492249	2.25809407234
+data_cleaning	Weld	s=2000, f=data/311-service-requests-sf=%d.csv	8.85908603668	8.91718196869	8.91619896889	8.86769580841	8.89861297607
+data_cleaning	Grizzly	s=2000, f=data/311-service-requests-sf=%d.csv	17.7357	17.9033	17.9986	17.7716	17.8942
+data_cleaning	Weld->Python	s=2000, f=data/311-service-requests-sf=%d.csv	0.000127077102661	0.000159978866577	0.000148057937622	0.000156879425049	0.000144004821777
+data_cleaning	Weld compile time	s=2000, f=data/311-service-requests-sf=%d.csv	0.159528970718	0.162552118301	0.162220001221	0.160780906677	0.162404060364
+data_cleaning	Pandas	s=2000, f=data/311-service-requests-sf=%d.csv	56.4091	57.0245	56.9887	57.2619	57.0139
+crime_index_simplified	Python->Weld	s=1500, f=data/us_cities_states_counties_sf=%d.csv, n=20	0.762820959091	0.759588956833	0.756577014923	0.751590013504	0.753496170044
+crime_index_simplified	Weld	s=1500, f=data/us_cities_states_counties_sf=%d.csv, n=20	6.18737912178	6.24624991417	12.7261919975	6.35603404045	6.26509094238
+crime_index_simplified	Grizzly	s=1500, f=data/us_cities_states_counties_sf=%d.csv, n=20	37.9851	50.3423	44.819	49.9985	49.1283
+crime_index_simplified	Weld->Python	s=1500, f=data/us_cities_states_counties_sf=%d.csv, n=20	7.60555267334e-05	5.29289245605e-05	5.50746917725e-05	5.41210174561e-05	5.69820404053e-05
+crime_index_simplified	Weld compile time	s=1500, f=data/us_cities_states_counties_sf=%d.csv, n=20	0.471342086792	0.45857000351	0.442611217499	0.406956195831	0.398988962173
+crime_index_simplified	Pandas	s=1500, f=data/us_cities_states_counties_sf=%d.csv, n=20	29.0848	20.7349	18.8517	20.043	18.8185

@@ -45,6 +45,12 @@ $TEST_HOME/scripts/replicate-csv \
     -r 500 \
     -d "|"
 
+$TEST_HOME/scripts/replicate-csv \
+    -i $DATADIR/us_cities_states_counties-pruned.csv \
+    -o $DATADIR/us_cities_states_counties_sf=1500.csv \
+    -r 1500 \
+    -d "|"
+
 rm $DATADIR/us_cities_states_counties.csv
 rm $DATADIR/us_cities_states_counties-raw.csv
 rm $DATADIR/us_cities_states_counties-pruned.csv

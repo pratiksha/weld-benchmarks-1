@@ -30,7 +30,7 @@ def crime_index_simplified_pandas(data, num_extra_columns):
     data_big_cities["Crime index"][data_big_cities["Crime index"] < 0.01] = 0.01
     return data_big_cities["Crime index"].sum()
 
-def crime_index_simplified_grizzly(data, num_extra_columns):
+def crime_index_simplified_grizzly(data, num_extra_columns, passes):
     # Get all city information with total population greater than 500,000
     data_big_cities = data[data["Total population"] > 500000]
 
@@ -50,7 +50,7 @@ def crime_index_simplified_grizzly(data, num_extra_columns):
     # Trim crime index values
     data_big_cities["Crime index"][data_big_cities["Crime index"] >= 0.02] = 0.02
     data_big_cities["Crime index"][data_big_cities["Crime index"] < 0.01] = 0.01
-    return data_big_cities["Crime index"].sum().evaluate(verbose=True)
+    return data_big_cities["Crime index"].sum().evaluate(verbose=True, passes=passes)
 
 
 if __name__ == '__main__':
@@ -63,12 +63,14 @@ if __name__ == '__main__':
                         help="Scale factor")
     parser.add_argument('-n', "--num_extra_columns", type=int, default=0,
                         help="Number of extra columns")
+    parser.add_argument('-p', "--passes", nargs='+', help="Optimization passes to apply")
 
     cmdline_args = parser.parse_args()
     opt_dict = vars(cmdline_args)
     input_file_template = os.path.join("../..", opt_dict["input_file_template"])
     input_file = input_file_template % opt_dict["scale_factor"]
     num_extra_columns = opt_dict["num_extra_columns"]
+    passes = opt_dict["passes"]
 
     data = pd.read_csv(input_file, delimiter='|')
     data.dropna(inplace=True)
@@ -81,6 +83,6 @@ if __name__ == '__main__':
     data.dropna(inplace=True)
     start = time.time()
     data = gr.DataFrameWeld(data)
-    result = crime_index_simplified_grizzly(data, num_extra_columns)
+    result = crime_index_simplified_grizzly(data, num_extra_columns, passes)
     end = time.time()
     print "Grizzly: %.4f (result=%.4f)" % (end - start, result)
