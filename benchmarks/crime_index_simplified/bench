@@ -30,7 +30,7 @@ def crime_index_simplified_pandas(data, num_extra_columns):
     data_big_cities["Crime index"][data_big_cities["Crime index"] < 0.01] = 0.01
     return data_big_cities["Crime index"].sum()
 
-def crime_index_simplified_grizzly(data, num_extra_columns, passes):
+def crime_index_simplified_grizzly(data, num_extra_columns, passes, num_threads):
     # Get all city information with total population greater than 500,000
     data_big_cities = data[data["Total population"] > 500000]
 
@@ -50,7 +50,10 @@ def crime_index_simplified_grizzly(data, num_extra_columns, passes):
     # Trim crime index values
     data_big_cities["Crime index"][data_big_cities["Crime index"] >= 0.02] = 0.02
     data_big_cities["Crime index"][data_big_cities["Crime index"] < 0.01] = 0.01
-    return data_big_cities["Crime index"].sum().evaluate(verbose=True, passes=passes)
+    return data_big_cities["Crime index"].sum().evaluate(verbose=True,
+                                                         passes=passes,
+                                                         num_threads=num_threads,
+                                                         apply_experimental_transforms=True)
 
 
 if __name__ == '__main__':
@@ -64,6 +67,7 @@ if __name__ == '__main__':
     parser.add_argument('-n', "--num_extra_columns", type=int, default=0,
                         help="Number of extra columns")
     parser.add_argument('-p', "--passes", nargs='+', help="Optimization passes to apply")
+    parser.add_argument('-t', "--num_threads", default=1, help="Number of threads")
 
     cmdline_args = parser.parse_args()
     opt_dict = vars(cmdline_args)
@@ -71,6 +75,7 @@ if __name__ == '__main__':
     input_file = input_file_template % opt_dict["scale_factor"]
     num_extra_columns = opt_dict["num_extra_columns"]
     passes = opt_dict["passes"]
+    num_threads = opt_dict["num_threads"]
 
     data = pd.read_csv(input_file, delimiter='|')
     data.dropna(inplace=True)
@@ -83,6 +88,6 @@ if __name__ == '__main__':
     data.dropna(inplace=True)
     start = time.time()
     data = gr.DataFrameWeld(data)
-    result = crime_index_simplified_grizzly(data, num_extra_columns, passes)
+    result = crime_index_simplified_grizzly(data, num_extra_columns, passes, num_threads)
     end = time.time()
     print "Grizzly: %.4f (result=%.4f)" % (end - start, result)

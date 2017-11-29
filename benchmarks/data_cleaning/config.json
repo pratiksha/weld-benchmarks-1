@@ -3,12 +3,13 @@
     "params": {
         "f": ["data/311-service-requests-sf=%d.csv"],
         "s": [2000],
-        "p": ["loop-fusion infer-size short-circuit-booleans predicate vectorize fix-iterate",
-              "infer-size short-circuit-booleans predicate vectorize fix-iterate",
-              "loop-fusion infer-size short-circuit-booleans predicate fix-iterate",
-              "loop-fusion short-circuit-booleans predicate vectorize fix-iterate",
-              "loop-fusion infer-size short-circuit-booleans vectorize fix-iterate"],
-        "t": [1, 8]
+        "p": ["\"\"",
+              "loop-fusion infer-size short-circuit-booleans predicate vectorize fix-iterate",
+              "unroll-static-loop infer-size short-circuit-booleans predicate vectorize fix-iterate",
+              "unroll-static-loop loop-fusion infer-size short-circuit-booleans predicate fix-iterate",
+              "unroll-static-loop loop-fusion short-circuit-booleans predicate vectorize fix-iterate",
+              "unroll-static-loop loop-fusion infer-size short-circuit-booleans vectorize fix-iterate"],
+        "t": [1]
     },
     "default_params": {
         "f": "data/311-service-requests-sf=%d.csv",
