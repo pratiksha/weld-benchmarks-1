@@ -3,7 +3,6 @@
     "params": {
         "f": ["data/us_cities_states_counties_sf=%d.csv"],
         "s": [1500],
-        "n": [20],
         "p": ["loop-fusion infer-size short-circuit-booleans predicate vectorize fix-iterate",
               "infer-size short-circuit-booleans predicate vectorize fix-iterate",
               "loop-fusion infer-size short-circuit-booleans predicate fix-iterate",
@@ -12,7 +11,6 @@
     },
     "default_params": {
         "f": "data/us_cities_states_counties_sf=%d.csv",
-        "s": 1500,
-        "n": 20
+        "s": 1500
     }
 }

@@ -17,7 +17,7 @@ def data_cleaning_pandas(requests):
 
     return len(requests['Incident Zip'].unique())
 
-def data_cleaning_grizzly(requests, passes):
+def data_cleaning_grizzly(requests, passes, num_threads):
     # Fix requests with extra digits
     requests['Incident Zip'] = requests['Incident Zip'].str.slice(0, 5)
 
@@ -25,7 +25,9 @@ def data_cleaning_grizzly(requests, passes):
     zero_zips = requests['Incident Zip'] == '00000'
     requests['Incident Zip'][zero_zips] = "nan"
 
-    return len(requests['Incident Zip'].unique().evaluate(verbose=True, passes=passes))
+    return len(requests['Incident Zip'].unique().evaluate(verbose=True,
+                                                          passes=passes,
+                                                          num_threads=num_threads))
 
 
 if __name__ == '__main__':
@@ -37,12 +39,15 @@ if __name__ == '__main__':
     parser.add_argument('-s', "--scale_factor", type=int, required=True,
                         help="Scale factor")
     parser.add_argument('-p', "--passes", nargs='+', help="Optimization passes to apply")
+    parser.add_argument('-t', "--num_threads", default=1,
+                        help="Number of threads")
 
     cmdline_args = parser.parse_args()
     opt_dict = vars(cmdline_args)
     input_file_template = os.path.join("../..", opt_dict["input_file_template"])
     input_file = input_file_template % opt_dict["scale_factor"]
     passes = opt_dict["passes"]
+    num_threads = opt_dict["num_threads"]
 
     na_values = ['NO CLUE', 'N/A', '0']
     requests = pd.read_csv(input_file, na_values=na_values, dtype={'Incident Zip': str})
@@ -54,6 +59,6 @@ if __name__ == '__main__':
     raw_requests = pd.read_csv(input_file, na_values=na_values, dtype={'Incident Zip': str})
     start = time.time()
     requests = gr.DataFrameWeld(raw_requests)
-    result = data_cleaning_grizzly(requests, passes)
+    result = data_cleaning_grizzly(requests, passes, num_threads)
     end = time.time()
     print "Grizzly: %.4f (result=%.4f)" % (end - start, result)
