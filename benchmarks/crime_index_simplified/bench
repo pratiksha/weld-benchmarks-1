@@ -67,7 +67,7 @@ if __name__ == '__main__':
     parser.add_argument('-n', "--num_extra_columns", type=int, default=0,
                         help="Number of extra columns")
     parser.add_argument('-p', "--passes", nargs='+', help="Optimization passes to apply")
-    parser.add_argument('-t', "--num_threads", default=1, help="Number of threads")
+    parser.add_argument('-t', "--num_threads", default=1, type=int, help="Number of threads")
 
     cmdline_args = parser.parse_args()
     opt_dict = vars(cmdline_args)

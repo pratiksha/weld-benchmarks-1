@@ -39,7 +39,7 @@ if __name__ == '__main__':
     parser.add_argument('-s', "--scale_factor", type=int, required=True,
                         help="Scale factor")
     parser.add_argument('-p', "--passes", nargs='+', help="Optimization passes to apply")
-    parser.add_argument('-t', "--num_threads", default=1,
+    parser.add_argument('-t', "--num_threads", default=1, type=int,
                         help="Number of threads")
 
     cmdline_args = parser.parse_args()

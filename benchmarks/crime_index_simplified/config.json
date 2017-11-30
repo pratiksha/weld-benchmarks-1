@@ -9,7 +9,7 @@
               "unroll-static-loop loop-fusion infer-size short-circuit-booleans predicate fix-iterate",
               "unroll-static-loop loop-fusion short-circuit-booleans predicate vectorize fix-iterate",
               "unroll-static-loop loop-fusion infer-size short-circuit-booleans vectorize fix-iterate"],
-        "t": [1]
+        "t": [8]
     },
     "default_params": {
         "f": "data/us_cities_states_counties_sf=%d.csv",
