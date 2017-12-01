@@ -100,5 +100,3 @@ if __name__ == "__main__":
         filename = args.filename
 
     time = run(filename, True, passes=passes, threads=str(args.threads))
-
-
