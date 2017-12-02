@@ -60,5 +60,5 @@ def format_lines(lines, trials=5):
     print final
 
 if __name__=="__main__":
-    parse("nyc.results")
+    parse("nyc.results.8t")
 
