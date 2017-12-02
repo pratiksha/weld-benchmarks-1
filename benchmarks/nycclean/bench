@@ -72,7 +72,7 @@ def run(filename, use_grizzly, passes=None, threads=1):
 
     end = time.time()
 
-    #print "Removed " + str(databegin - length) + " bad records."
+    # print "Removed " + str(databegin - length) + " bad records."
 
     print "End-to-End: {} seconds".format(end - start)
 
@@ -93,6 +93,9 @@ if __name__ == "__main__":
         passes = [p.strip().lower() for p in args.passes]
     else:
         passes = None
+    
+    if passes == [""]:
+       	passes = None
 
     try:
         filename = args.filename % args.scale

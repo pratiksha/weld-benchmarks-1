@@ -6,9 +6,9 @@
         "p": ["\"\"",
           "unroll-static-loop infer-size inline-literals unroll-structs predicate short-circuit-booleans vectorize" ,
           "loop-fusion unroll-static-loop inline-literals unroll-structs predicate short-circuit-booleans vectorize" ,
-          "loop-fusion unroll-static-loop infer-size inline-literals unroll-structs short-circuit-booleans vectorize",
+          "loop-fusion unroll-static-loop infer-size inline-literals short-circuit-booleans vectorize",
           "loop-fusion unroll-static-loop infer-size inline-literals unroll-structs predicate short-circuit-booleans"
         ],
-        "t": [1, 4]
+        "t": [1]
     }
 }
