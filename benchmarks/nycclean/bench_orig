@@ -46,30 +46,30 @@ def run(filename, use_grizzly, passes=None, threads=1):
 
     start = time.time()
 
-    if 'passenger_count' in cols:
-       ft = ft[ft['passenger_count'] <= 3]
-
-    ft = ft[ft['dropoff_latitude'] < 43]
-    ft = ft[ft['dropoff_latitude'] > 39]
-    ft = ft[ft['dropoff_longitude'] > -76]
-    ft = ft[ft['dropoff_longitude'] < -73]
-
-    ft = ft[ft['pickup_latitude'] < 43]
-    ft = ft[ft['pickup_latitude'] > 39]
-    ft = ft[ft['pickup_longitude'] > -76]
-    ft = ft[ft['pickup_longitude'] < -73]
-
-    if 'total_amount' in cols:
-        ft = ft[ft['total_amount'] != 0]
-
     if 'trip_distance' in cols:
         ft = ft[ft['trip_distance'] != 0]
         
+    if 'total_amount' in cols:
+        ft = ft[ft['total_amount'] != 0]
+
+    ft = ft[ft['pickup_longitude'] < -73]
+    ft = ft[ft['pickup_longitude'] > -76]
+    ft = ft[ft['pickup_latitude'] > 39]
+    ft = ft[ft['pickup_latitude'] < 43]
+
+    ft = ft[ft['dropoff_longitude'] < -73]
+    ft = ft[ft['dropoff_longitude'] > -76]
+    ft = ft[ft['dropoff_latitude'] > 39]
+    ft = ft[ft['dropoff_latitude'] < 43]
+
+    if 'passenger_count' in cols:
+        ft = ft[ft['passenger_count'] <= 3]
+
     if use_grizzly:
         length = ft.len(passes=passes, threads=threads)
     else:
-	length = len(ft)
-#    print length
+        length = len(ft)
+    print length
         
     end = time.time()
 

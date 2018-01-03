@@ -1,0 +1,254 @@
+loop-fusion
+unroll-static-loop
+inline-literals
+unroll-structs
+short-circuit-booleans
+inline-let
+predicate
+vectorize
+loop-fusion unroll-static-loop
+loop-fusion inline-literals
+loop-fusion unroll-structs
+loop-fusion short-circuit-booleans
+loop-fusion inline-let
+loop-fusion predicate
+loop-fusion vectorize
+unroll-static-loop inline-literals
+unroll-static-loop unroll-structs
+unroll-static-loop short-circuit-booleans
+unroll-static-loop inline-let
+unroll-static-loop predicate
+unroll-static-loop vectorize
+inline-literals unroll-structs
+inline-literals short-circuit-booleans
+inline-literals inline-let
+inline-literals predicate
+inline-literals vectorize
+unroll-structs short-circuit-booleans
+unroll-structs inline-let
+unroll-structs predicate
+unroll-structs vectorize
+short-circuit-booleans inline-let
+short-circuit-booleans predicate
+short-circuit-booleans vectorize
+inline-let predicate
+inline-let vectorize
+predicate vectorize
+loop-fusion unroll-static-loop inline-literals
+loop-fusion unroll-static-loop unroll-structs
+loop-fusion unroll-static-loop short-circuit-booleans
+loop-fusion unroll-static-loop inline-let
+loop-fusion unroll-static-loop predicate
+loop-fusion unroll-static-loop vectorize
+loop-fusion inline-literals unroll-structs
+loop-fusion inline-literals short-circuit-booleans
+loop-fusion inline-literals inline-let
+loop-fusion inline-literals predicate
+loop-fusion inline-literals vectorize
+loop-fusion unroll-structs short-circuit-booleans
+loop-fusion unroll-structs inline-let
+loop-fusion unroll-structs predicate
+loop-fusion unroll-structs vectorize
+loop-fusion short-circuit-booleans inline-let
+loop-fusion short-circuit-booleans predicate
+loop-fusion short-circuit-booleans vectorize
+loop-fusion inline-let predicate
+loop-fusion inline-let vectorize
+loop-fusion predicate vectorize
+unroll-static-loop inline-literals unroll-structs
+unroll-static-loop inline-literals short-circuit-booleans
+unroll-static-loop inline-literals inline-let
+unroll-static-loop inline-literals predicate
+unroll-static-loop inline-literals vectorize
+unroll-static-loop unroll-structs short-circuit-booleans
+unroll-static-loop unroll-structs inline-let
+unroll-static-loop unroll-structs predicate
+unroll-static-loop unroll-structs vectorize
+unroll-static-loop short-circuit-booleans inline-let
+unroll-static-loop short-circuit-booleans predicate
+unroll-static-loop short-circuit-booleans vectorize
+unroll-static-loop inline-let predicate
+unroll-static-loop inline-let vectorize
+unroll-static-loop predicate vectorize
+inline-literals unroll-structs short-circuit-booleans
+inline-literals unroll-structs inline-let
+inline-literals unroll-structs predicate
+inline-literals unroll-structs vectorize
+inline-literals short-circuit-booleans inline-let
+inline-literals short-circuit-booleans predicate
+inline-literals short-circuit-booleans vectorize
+inline-literals inline-let predicate
+inline-literals inline-let vectorize
+inline-literals predicate vectorize
+unroll-structs short-circuit-booleans inline-let
+unroll-structs short-circuit-booleans predicate
+unroll-structs short-circuit-booleans vectorize
+unroll-structs inline-let predicate
+unroll-structs inline-let vectorize
+unroll-structs predicate vectorize
+short-circuit-booleans inline-let predicate
+short-circuit-booleans inline-let vectorize
+short-circuit-booleans predicate vectorize
+inline-let predicate vectorize
+loop-fusion unroll-static-loop inline-literals unroll-structs
+loop-fusion unroll-static-loop inline-literals short-circuit-booleans
+loop-fusion unroll-static-loop inline-literals inline-let
+loop-fusion unroll-static-loop inline-literals predicate
+loop-fusion unroll-static-loop inline-literals vectorize
+loop-fusion unroll-static-loop unroll-structs short-circuit-booleans
+loop-fusion unroll-static-loop unroll-structs inline-let
+loop-fusion unroll-static-loop unroll-structs predicate
+loop-fusion unroll-static-loop unroll-structs vectorize
+loop-fusion unroll-static-loop short-circuit-booleans inline-let
+loop-fusion unroll-static-loop short-circuit-booleans predicate
+loop-fusion unroll-static-loop short-circuit-booleans vectorize
+loop-fusion unroll-static-loop inline-let predicate
+loop-fusion unroll-static-loop inline-let vectorize
+loop-fusion unroll-static-loop predicate vectorize
+loop-fusion inline-literals unroll-structs short-circuit-booleans
+loop-fusion inline-literals unroll-structs inline-let
+loop-fusion inline-literals unroll-structs predicate
+loop-fusion inline-literals unroll-structs vectorize
+loop-fusion inline-literals short-circuit-booleans inline-let
+loop-fusion inline-literals short-circuit-booleans predicate
+loop-fusion inline-literals short-circuit-booleans vectorize
+loop-fusion inline-literals inline-let predicate
+loop-fusion inline-literals inline-let vectorize
+loop-fusion inline-literals predicate vectorize
+loop-fusion unroll-structs short-circuit-booleans inline-let
+loop-fusion unroll-structs short-circuit-booleans predicate
+loop-fusion unroll-structs short-circuit-booleans vectorize
+loop-fusion unroll-structs inline-let predicate
+loop-fusion unroll-structs inline-let vectorize
+loop-fusion unroll-structs predicate vectorize
+loop-fusion short-circuit-booleans inline-let predicate
+loop-fusion short-circuit-booleans inline-let vectorize
+loop-fusion short-circuit-booleans predicate vectorize
+loop-fusion inline-let predicate vectorize
+unroll-static-loop inline-literals unroll-structs short-circuit-booleans
+unroll-static-loop inline-literals unroll-structs inline-let
+unroll-static-loop inline-literals unroll-structs predicate
+unroll-static-loop inline-literals unroll-structs vectorize
+unroll-static-loop inline-literals short-circuit-booleans inline-let
+unroll-static-loop inline-literals short-circuit-booleans predicate
+unroll-static-loop inline-literals short-circuit-booleans vectorize
+unroll-static-loop inline-literals inline-let predicate
+unroll-static-loop inline-literals inline-let vectorize
+unroll-static-loop inline-literals predicate vectorize
+unroll-static-loop unroll-structs short-circuit-booleans inline-let
+unroll-static-loop unroll-structs short-circuit-booleans predicate
+unroll-static-loop unroll-structs short-circuit-booleans vectorize
+unroll-static-loop unroll-structs inline-let predicate
+unroll-static-loop unroll-structs inline-let vectorize
+unroll-static-loop unroll-structs predicate vectorize
+unroll-static-loop short-circuit-booleans inline-let predicate
+unroll-static-loop short-circuit-booleans inline-let vectorize
+unroll-static-loop short-circuit-booleans predicate vectorize
+unroll-static-loop inline-let predicate vectorize
+inline-literals unroll-structs short-circuit-booleans inline-let
+inline-literals unroll-structs short-circuit-booleans predicate
+inline-literals unroll-structs short-circuit-booleans vectorize
+inline-literals unroll-structs inline-let predicate
+inline-literals unroll-structs inline-let vectorize
+inline-literals unroll-structs predicate vectorize
+inline-literals short-circuit-booleans inline-let predicate
+inline-literals short-circuit-booleans inline-let vectorize
+inline-literals short-circuit-booleans predicate vectorize
+inline-literals inline-let predicate vectorize
+unroll-structs short-circuit-booleans inline-let predicate
+unroll-structs short-circuit-booleans inline-let vectorize
+unroll-structs short-circuit-booleans predicate vectorize
+unroll-structs inline-let predicate vectorize
+short-circuit-booleans inline-let predicate vectorize
+loop-fusion unroll-static-loop inline-literals unroll-structs short-circuit-booleans
+loop-fusion unroll-static-loop inline-literals unroll-structs inline-let
+loop-fusion unroll-static-loop inline-literals unroll-structs predicate
+loop-fusion unroll-static-loop inline-literals unroll-structs vectorize
+loop-fusion unroll-static-loop inline-literals short-circuit-booleans inline-let
+loop-fusion unroll-static-loop inline-literals short-circuit-booleans predicate
+loop-fusion unroll-static-loop inline-literals short-circuit-booleans vectorize
+loop-fusion unroll-static-loop inline-literals inline-let predicate
+loop-fusion unroll-static-loop inline-literals inline-let vectorize
+loop-fusion unroll-static-loop inline-literals predicate vectorize
+loop-fusion unroll-static-loop unroll-structs short-circuit-booleans inline-let
+loop-fusion unroll-static-loop unroll-structs short-circuit-booleans predicate
+loop-fusion unroll-static-loop unroll-structs short-circuit-booleans vectorize
+loop-fusion unroll-static-loop unroll-structs inline-let predicate
+loop-fusion unroll-static-loop unroll-structs inline-let vectorize
+loop-fusion unroll-static-loop unroll-structs predicate vectorize
+loop-fusion unroll-static-loop short-circuit-booleans inline-let predicate
+loop-fusion unroll-static-loop short-circuit-booleans inline-let vectorize
+loop-fusion unroll-static-loop short-circuit-booleans predicate vectorize
+loop-fusion unroll-static-loop inline-let predicate vectorize
+loop-fusion inline-literals unroll-structs short-circuit-booleans inline-let
+loop-fusion inline-literals unroll-structs short-circuit-booleans predicate
+loop-fusion inline-literals unroll-structs short-circuit-booleans vectorize
+loop-fusion inline-literals unroll-structs inline-let predicate
+loop-fusion inline-literals unroll-structs inline-let vectorize
+loop-fusion inline-literals unroll-structs predicate vectorize
+loop-fusion inline-literals short-circuit-booleans inline-let predicate
+loop-fusion inline-literals short-circuit-booleans inline-let vectorize
+loop-fusion inline-literals short-circuit-booleans predicate vectorize
+loop-fusion inline-literals inline-let predicate vectorize
+loop-fusion unroll-structs short-circuit-booleans inline-let predicate
+loop-fusion unroll-structs short-circuit-booleans inline-let vectorize
+loop-fusion unroll-structs short-circuit-booleans predicate vectorize
+loop-fusion unroll-structs inline-let predicate vectorize
+loop-fusion short-circuit-booleans inline-let predicate vectorize
+unroll-static-loop inline-literals unroll-structs short-circuit-booleans inline-let
+unroll-static-loop inline-literals unroll-structs short-circuit-booleans predicate
+unroll-static-loop inline-literals unroll-structs short-circuit-booleans vectorize
+unroll-static-loop inline-literals unroll-structs inline-let predicate
+unroll-static-loop inline-literals unroll-structs inline-let vectorize
+unroll-static-loop inline-literals unroll-structs predicate vectorize
+unroll-static-loop inline-literals short-circuit-booleans inline-let predicate
+unroll-static-loop inline-literals short-circuit-booleans inline-let vectorize
+unroll-static-loop inline-literals short-circuit-booleans predicate vectorize
+unroll-static-loop inline-literals inline-let predicate vectorize
+unroll-static-loop unroll-structs short-circuit-booleans inline-let predicate
+unroll-static-loop unroll-structs short-circuit-booleans inline-let vectorize
+unroll-static-loop unroll-structs short-circuit-booleans predicate vectorize
+unroll-static-loop unroll-structs inline-let predicate vectorize
+unroll-static-loop short-circuit-booleans inline-let predicate vectorize
+inline-literals unroll-structs short-circuit-booleans inline-let predicate
+inline-literals unroll-structs short-circuit-booleans inline-let vectorize
+inline-literals unroll-structs short-circuit-booleans predicate vectorize
+inline-literals unroll-structs inline-let predicate vectorize
+inline-literals short-circuit-booleans inline-let predicate vectorize
+unroll-structs short-circuit-booleans inline-let predicate vectorize
+loop-fusion unroll-static-loop inline-literals unroll-structs short-circuit-booleans inline-let
+loop-fusion unroll-static-loop inline-literals unroll-structs short-circuit-booleans predicate
+loop-fusion unroll-static-loop inline-literals unroll-structs short-circuit-booleans vectorize
+loop-fusion unroll-static-loop inline-literals unroll-structs inline-let predicate
+loop-fusion unroll-static-loop inline-literals unroll-structs inline-let vectorize
+loop-fusion unroll-static-loop inline-literals unroll-structs predicate vectorize
+loop-fusion unroll-static-loop inline-literals short-circuit-booleans inline-let predicate
+loop-fusion unroll-static-loop inline-literals short-circuit-booleans inline-let vectorize
+loop-fusion unroll-static-loop inline-literals short-circuit-booleans predicate vectorize
+loop-fusion unroll-static-loop inline-literals inline-let predicate vectorize
+loop-fusion unroll-static-loop unroll-structs short-circuit-booleans inline-let predicate
+loop-fusion unroll-static-loop unroll-structs short-circuit-booleans inline-let vectorize
+loop-fusion unroll-static-loop unroll-structs short-circuit-booleans predicate vectorize
+loop-fusion unroll-static-loop unroll-structs inline-let predicate vectorize
+loop-fusion unroll-static-loop short-circuit-booleans inline-let predicate vectorize
+loop-fusion inline-literals unroll-structs short-circuit-booleans inline-let predicate
+loop-fusion inline-literals unroll-structs short-circuit-booleans inline-let vectorize
+loop-fusion inline-literals unroll-structs short-circuit-booleans predicate vectorize
+loop-fusion inline-literals unroll-structs inline-let predicate vectorize
+loop-fusion inline-literals short-circuit-booleans inline-let predicate vectorize
+loop-fusion unroll-structs short-circuit-booleans inline-let predicate vectorize
+unroll-static-loop inline-literals unroll-structs short-circuit-booleans inline-let predicate
+unroll-static-loop inline-literals unroll-structs short-circuit-booleans inline-let vectorize
+unroll-static-loop inline-literals unroll-structs short-circuit-booleans predicate vectorize
+unroll-static-loop inline-literals unroll-structs inline-let predicate vectorize
+unroll-static-loop inline-literals short-circuit-booleans inline-let predicate vectorize
+unroll-static-loop unroll-structs short-circuit-booleans inline-let predicate vectorize
+inline-literals unroll-structs short-circuit-booleans inline-let predicate vectorize
+loop-fusion unroll-static-loop inline-literals unroll-structs short-circuit-booleans inline-let predicate
+loop-fusion unroll-static-loop inline-literals unroll-structs short-circuit-booleans inline-let vectorize
+loop-fusion unroll-static-loop inline-literals unroll-structs short-circuit-booleans predicate vectorize
+loop-fusion unroll-static-loop inline-literals unroll-structs inline-let predicate vectorize
+loop-fusion unroll-static-loop inline-literals short-circuit-booleans inline-let predicate vectorize
+loop-fusion unroll-static-loop unroll-structs short-circuit-booleans inline-let predicate vectorize
+loop-fusion inline-literals unroll-structs short-circuit-booleans inline-let predicate vectorize
+unroll-static-loop inline-literals unroll-structs short-circuit-booleans inline-let predicate vectorize

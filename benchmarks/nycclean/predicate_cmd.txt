@@ -1,0 +1,2 @@
+#!/bin/bash
+./bench -f data/taxi_sf\=1.csv.small.0.5 -p loop-fusion unroll-static-loop infer-size inline-literals unroll-structs inline-let inline-let-getfield predicate vectorize -s 1 -t 1

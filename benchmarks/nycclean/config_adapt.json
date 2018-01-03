@@ -7,6 +7,6 @@
 	      "loop-fusion unroll-static-loop infer-size inline-literals unroll-structs short-circuit-booleans inline-let inline-let-getfield vectorize",
               "loop-fusion unroll-static-loop infer-size inline-literals unroll-structs inline-let inline-let-getfield measurement inline-let inline-let-getfield vectorize short-circuit-booleans"
 	     ],
-        "t": [1]
+        "t": [8]
     }
 }

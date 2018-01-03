@@ -1,0 +1,16 @@
+{
+    "compile":false,
+    "params": {
+        "f": ["data/taxi_sf=%d.csv", "data/taxi_sf=%d.csv.0.0001", "data/taxi_sf=%d.csv.0.5"],
+        "s": [1],
+        "p": ["loop-fusion unroll-static-loop infer-size inline-literals unroll-structs inline-let inline-let-getfield predicate vectorize",
+	      "loop-fusion unroll-static-loop infer-size inline-literals unroll-structs short-circuit-booleans inline-let inline-let-getfield vectorize",
+              "loop-fusion unroll-static-loop infer-size inline-literals unroll-structs inline-let inline-let-getfield measurement inline-let inline-let-getfield vectorize short-circuit-booleans",
+	      "unroll-static-loop infer-size inline-literals unroll-structs inline-let inline-let-getfield predicate vectorize",
+	      "loop-fusion infer-size inline-literals unroll-structs inline-let inline-let-getfield predicate vectorize",
+	      "loop-fusion unroll-static-loop infer-size inline-literals unroll-structs inline-let inline-let-getfield predicate",
+	      "loop-fusion unroll-static-loop infer-size inline-literals unroll-structs inline-let inline-let-getfield vectorize"
+	     ],
+        "t": [8]
+    }
+}

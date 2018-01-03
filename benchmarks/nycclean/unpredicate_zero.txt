@@ -1,0 +1,2 @@
+#!/bin/bash
+./bench_zero -f data/taxi_sf\=1.csv.0.001 -p loop-fusion unroll-static-loop inline-literals unroll-structs short-circuit-booleans inline-let inline-let-getfield vectorize -s 1 -t 1
