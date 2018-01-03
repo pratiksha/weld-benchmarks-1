@@ -1,0 +1,17 @@
+{
+    "compile":true,
+    "params": {
+        "s": [0.01, 0.5, 1.0],
+        "n": {
+            "start":1000000,
+            "stop":1000000000,
+            "n":10,
+            "scale":"log10",
+            "type":"int"
+        }
+    },
+    "default_params": {
+        "s": 1.0,
+        "n": 200000000
+    }
+}

@@ -10,7 +10,9 @@
 #define _POSIX_C_SOURCE 2
 #endif
 
+#include <algorithm>
 #include <ctime>
+#include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -114,12 +116,13 @@ double run_query(int num_cond, struct gen_data *d) {
     return final_result;
 }
 
-double run_query_weld(const char* fname, struct gen_data *d) {
+double run_query_weld(const char* fname, struct gen_data *d, string passes) {
     // Compile Weld module.
     weld_error_t e = weld_error_new();
     weld_conf_t conf = weld_conf_new();
-    //weld_conf_set(conf, "weld.compile.traceExecution", "true");
-      
+    //   weld_conf_set(conf, "weld.compile.dumpCode", "true");
+    weld_conf_set(conf, "weld.optimization.passes", passes.c_str());
+    
     FILE *fptr = fopen(fname, "r");
     fseek(fptr, 0, SEEK_END);
     int string_size = ftell(fptr);
@@ -127,11 +130,12 @@ double run_query_weld(const char* fname, struct gen_data *d) {
     char *program = (char *) malloc(sizeof(char) * (string_size + 1));
     fread(program, sizeof(char), string_size, fptr);
     program[string_size] = '\0';
-
+    
     struct timeval start, end, diff;
     gettimeofday(&start, 0);
     weld_module_t m = weld_module_compile(program, conf, e);
     weld_conf_free(conf);
+
     gettimeofday(&end, 0);
     timersub(&end, &start, &diff);
     //printf("Weld compile time: %ld.%06ld\n",
@@ -160,6 +164,7 @@ double run_query_weld(const char* fname, struct gen_data *d) {
         printf("Error message: %s\n", err);
         exit(1);
     }
+
     double* result_data = (double*) weld_value_data(result);
     double final_result = *result_data;
 
@@ -190,9 +195,11 @@ int main(int argc, char **argv) {
     int num_cond = 10;
     // Weld code to run.
     std::string fname = "generated.weld";
+    // Optimization passes.
+    std::string passes = "loop-fusion unroll-static-loop infer-size inline-literals unroll-structs short-circuit-booleans inline-let predicate vectorize";
 
     int ch;
-    while ((ch = getopt(argc, argv, "n:c:m:p:f:")) != -1) {
+    while ((ch = getopt(argc, argv, "n:c:m:s:p:f:")) != -1) {
       switch (ch) {
       case 'n':
         num_items = atoi(optarg);
@@ -203,12 +210,15 @@ int main(int argc, char **argv) {
       case 'm':
         num_cond = atoi(optarg);
         break;
-      case 'p':
+      case 's':
         prob = atof(optarg);
         break;
       case 'f':
         fname = optarg;
         break;
+      case 'p':
+	passes = optarg;
+	break;
       case '?':
       default:
         fprintf(stderr, "invalid options");
@@ -221,6 +231,7 @@ int main(int argc, char **argv) {
     assert(num_cols > 0);
     assert(num_cond > 0);
     assert(prob >= 0.0 && prob <= 1.0);
+    std::replace(passes.begin(), passes.end(), ' ', ',');
 
     struct gen_data d(num_items, num_cols, prob);
     double result;
@@ -234,7 +245,7 @@ int main(int argc, char **argv) {
     //         (long) diff.tv_sec, (long) diff.tv_usec, result);
 
     d = gen_data(num_items, num_cols, prob);
-    result = run_query_weld(fname.c_str(), &d);
+    result = run_query_weld(fname.c_str(), &d, passes);
 
     return 0;
 }

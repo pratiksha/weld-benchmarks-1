@@ -10,6 +10,7 @@
 #define _POSIX_C_SOURCE 2
 #endif
 
+#include <algorithm>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -19,7 +20,11 @@
 #include <sys/time.h>
 #include <omp.h>
 
+#include <string>
+
 #include "weld.h"
+
+using namespace std;
 
 // Value for the predicate to pass.
 #define PASS 19940101
@@ -78,10 +83,15 @@ float run_query(struct gen_data *d) {
     return final_result;
 }
 
-float run_query_weld(struct gen_data *d) {
+float run_query_weld(struct gen_data *d, string passes) {
     // Compile Weld module.
     weld_error_t e = weld_error_new();
     weld_conf_t conf = weld_conf_new();
+
+    weld_conf_set(conf, "weld.optimization.passes", passes.c_str());
+    weld_conf_set(conf, "weld.compile.dumpCode", "true");
+    //weld_conf_set(conf, "weld.threads", "8");
+    //weld_conf_set(conf, "weld.memory.limit", "10000000000");
 
     FILE *fptr = fopen("tpch_q6.weld", "r");
     fseek(fptr, 0, SEEK_END);
@@ -193,18 +203,22 @@ int main(int argc, char **argv) {
     int num_items = (1E8 / sizeof(int));
     // Approx. PASS probability.
     float prob = 0.01;
+    string passes = "";
 
     int ch;
-    while ((ch = getopt(argc, argv, "b:n:p:")) != -1) {
+    while ((ch = getopt(argc, argv, "s:n:p:")) != -1) {
         switch (ch) {
             case 'n':
                 num_items = atoi(optarg);
                 break;
-            case 'p':
+            case 's':
                 prob = atof(optarg);
                 break;
-            case '?':
-            default:
+	    case 'p':
+	        passes = optarg;
+		break;
+	    case '?':
+	    default:
                 fprintf(stderr, "invalid options");
                 exit(1);
         }
@@ -213,6 +227,7 @@ int main(int argc, char **argv) {
     // Check parameters.
     assert(num_items > 0);
     assert(prob >= 0.0 && prob <= 1.0);
+    std::replace(passes.begin(), passes.end(), ' ', ',');
 
     struct gen_data d = generate_data(num_items, prob);
     float result;
@@ -227,7 +242,7 @@ int main(int argc, char **argv) {
     free_generated_data(&d);
 
     d = generate_data(num_items, prob);
-    result = run_query_weld(&d);
+    result = run_query_weld(&d, passes);
     free_generated_data(&d);
 
     return 0;

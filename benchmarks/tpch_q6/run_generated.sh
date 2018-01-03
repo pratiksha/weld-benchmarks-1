@@ -9,6 +9,6 @@ do
     for i in $(seq 2 $cols)
     do
         python generate_benchmarks.py $i $cols > generated.weld;
-        ./gen -n $nitems -c $cols -m $i -p $sel;
-    done > predicated_${sel}.tsv
+        ./gen -n $nitems -c $cols -m $i -s $sel;
+    done > dynamic_${sel}.tsv
 done

@@ -7,8 +7,8 @@ ifeq ($(UNAME_S),Linux)
     CC=g++ -fopenmp
 endif
 
-CPPFLAGS=-O0 -DDEBUG -ggdb -march=native -std=c++11 -I$(WELD_HOME)/c
-LDFLAGS=-L$(WELD_HOME)/target/release
+CPPFLAGS=-O3 -march=native -std=c++11 -I$(WELD_HOME)/c
+LDFLAGS=-L$(WELD_HOME)/target/debug
 LIBS=-lweld
 
 .PHONY: all clean
