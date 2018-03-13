@@ -44,10 +44,8 @@ struct gen_data {
 
 // An input data item represented as in a row format.
 struct lineitems {
-    int32_t *shipdates;
+  //    int32_t *shipdates;
     double *discounts;
-    double *quantities;
-    double *extended_prices;
 };
 
 template <typename T>
@@ -57,10 +55,8 @@ struct weld_vector {
 };
 
 struct args {
-    struct weld_vector<int32_t> shipdates;
+  //    struct weld_vector<int32_t> shipdates;
     struct weld_vector<double> discounts;
-    struct weld_vector<double> quantities;
-    struct weld_vector<double> extended_prices;
 };
 
 template <typename T>
@@ -75,9 +71,9 @@ double run_query(struct gen_data *d) {
     double final_result = 0.0;
     for (int i = 0; i < d->num_items; i++) {
         struct lineitems *items = d->items;
-        if (items->shipdates[i] >= 19940101 && items->shipdates[i] < 19950101 &&
-            items->discounts[i] >= 5.0 && items->discounts[i] <= 7.0 && items->quantities[i] < 24.0) {
-            final_result += (items->discounts[i] * items->extended_prices[i]);
+        //if (items->shipdates[i] >= 19940101 && items->shipdates[i] < 19950101) {
+	if (items->discounts[i] >= 6.0) {
+            final_result += (items->discounts[i]);
         }
     }
     return final_result;
@@ -89,12 +85,13 @@ double run_query_weld(struct gen_data *d, string passes) {
     weld_conf_t conf = weld_conf_new();
 
     weld_conf_set(conf, "weld.optimization.passes", passes.c_str());
-    weld_set_log_level(5);
-    //weld_conf_set(conf, "weld.compile.dumpCode", "true");
-    weld_conf_set(conf, "weld.threads", "1");
-    //weld_conf_set(conf, "weld.memory.limit", "100000000000");
+    weld_conf_set(conf, "weld.compile.multithreadSupport", "false");
+    weld_conf_set(conf, "weld.compile.dumpCode", "true");
+    weld_conf_set(conf, "weld.compile.dumpCodeDir", "minimalcodea/");
+    //weld_conf_set(conf, "weld.threads", "8");
+    //weld_conf_set(conf, "weld.memory.limit", "10000000000");
 
-    FILE *fptr = fopen("tpch_q6.weld", "r");
+    FILE *fptr = fopen("q6_minimal.weld", "r");
     fseek(fptr, 0, SEEK_END);
     int string_size = ftell(fptr);
     rewind(fptr);
@@ -119,10 +116,8 @@ double run_query_weld(struct gen_data *d, string passes) {
 
    gettimeofday(&start, 0);
    struct args args;
-   args.shipdates = make_weld_vector<int32_t>(d->items->shipdates, d->num_items);
+   //   args.shipdates = make_weld_vector<int32_t>(d->items->shipdates, d->num_items);
    args.discounts = make_weld_vector<double>(d->items->discounts, d->num_items);
-   args.quantities = make_weld_vector<double>(d->items->quantities, d->num_items);
-   args.extended_prices = make_weld_vector<double>(d->items->extended_prices, d->num_items);
 
    weld_value_t weld_args = weld_value_new(&args);
 
@@ -166,23 +161,19 @@ struct gen_data generate_data(int num_items, double prob) {
 
     d.items = (struct lineitems *)malloc(sizeof(struct lineitems));
 
-    d.items->shipdates = (int32_t *) malloc(sizeof(int32_t) * num_items);
+    //    d.items->shipdates = (int32_t *) malloc(sizeof(int32_t) * num_items);
     d.items->discounts = (double *) malloc(sizeof(double) * num_items);
-    d.items->quantities = (double *) malloc(sizeof(double) * num_items);
-    d.items->extended_prices = (double *) malloc(sizeof(double) * num_items);
 
     int pass_thres = (int)(prob * 1000000.0);
     srand(1);
     for (int i = 0; i < d.num_items; i++) {
-        if (rand() % 1000000 <= pass_thres) {
-            d.items->shipdates[i] = PASS;
-        } else {
-            d.items->shipdates[i] = FAIL;
-        }
+        // if (rand() % 1000000 <= pass_thres) {
+        //     d.items->shipdates[i] = PASS;
+        // } else {
+        //     d.items->shipdates[i] = FAIL;
+        // }
 
         d.items->discounts[i] = 6.0;
-        d.items->quantities[i] = 12.0;
-        d.items->extended_prices[i] = rand() % 100;
         // TODO: Figure out how to set return flag and linestatus to ensure that
         // num_buckets constraint is respected.
     }
@@ -191,10 +182,8 @@ struct gen_data generate_data(int num_items, double prob) {
 }
 
 void free_generated_data(struct gen_data *d) {
-    free(d->items->shipdates);
+  //    free(d->items->shipdates);
     free(d->items->discounts);
-    free(d->items->quantities);
-    free(d->items->extended_prices);
 
     free(d->items);
 }

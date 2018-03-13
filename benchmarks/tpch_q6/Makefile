@@ -16,6 +16,9 @@ LIBS=-lweld
 all:
 	${CC} ${LDFLAGS} tpch_q6.cpp ${CPPFLAGS} -o bench ${LIBS}
 
+minimal:
+	${CC} ${LDFLAGS} q6_minimal.cpp ${CPPFLAGS} -o minimal ${LIBS}
+
 gen:
 	${CC} ${LDFLAGS} generated.cpp ${CPPFLAGS} -o gen ${LIBS}
 
